@@ -1,5 +1,6 @@
 {
   "name": "grid-drawer",
+  "homepage": "http://cra3e.github.io/grid-drawer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -68,7 +69,10 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -145,6 +149,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.2.0",
     "webpack": "^5.96.1",
     "webpack-dev-server": "^5.1.0"
   }
