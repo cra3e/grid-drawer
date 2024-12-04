@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/grid-drawer/static/css/main.e6c13ad2.css",
+    "main.js": "/grid-drawer/static/js/main.c0466a34.js",
+    "static/js/453.941b76d7.chunk.js": "/grid-drawer/static/js/453.941b76d7.chunk.js",
+    "index.html": "/grid-drawer/index.html",
+    "main.e6c13ad2.css.map": "/grid-drawer/static/css/main.e6c13ad2.css.map",
+    "main.c0466a34.js.map": "/grid-drawer/static/js/main.c0466a34.js.map",
+    "453.941b76d7.chunk.js.map": "/grid-drawer/static/js/453.941b76d7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.c0466a34.js"
+  ]
+}
