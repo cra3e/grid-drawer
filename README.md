@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# Документация приложения Grid Drawer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Обзор
 
-## Available Scripts
+**Grid Drawer** — это веб-приложение, созданное на базе React, которое позволяет пользователям создавать и настраивать сетку для различных целей, таких как рисование, письмо или дизайн. Приложение предоставляет гибкий интерфейс для настройки размеров холста, полей, расстояния между линиями и цветов. Пользователи также могут распечатать сетку или экспортировать её в PDF.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Возможности
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. **Настраиваемые размеры холста**
+   - Пользователи могут задавать ширину и высоту холста в миллиметрах (мм).
+   - Доступны предопределённые размеры для стандартных форматов бумаги (A4, A3) для быстрого выбора.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. **Регулируемые поля**
+   - Пользователи могут задавать поля вокруг холста, чтобы контролировать область для рисования.
 
-### `npm test`
+### 3. **Настройка горизонтальных линий**
+   - **Расстояние между линиями**: Пользователи могут регулировать расстояние между горизонтальными линиями для разных стилей письма (например, высота заглавных букв, строчных букв и межстрочного расстояния).
+   - **Цвет линий**: Пользователи могут выбирать цвет горизонтальных линий.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. **Настройка вертикальных линий**
+   - **Расстояние между линиями**: Пользователи могут задавать расстояние между вертикальными линиями.
+   - **Угол наклона**: Пользователи могут наклонять вертикальные линии под определённым углом (от -45° до 45°).
+   - **Цвет линий**: Пользователи могут выбирать цвет вертикальных линий.
 
-### `npm run build`
+### 5. **Печать и экспорт**
+   - **Печать**: Пользователи могут распечатать сетку прямо из браузера.
+   - **Экспорт в PDF**: Пользователи могут экспортировать сетку в PDF-файл для дальнейшего использования.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Используемые технологии
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. **React**
+   - Приложение создано с использованием React, популярной JavaScript-библиотеки для разработки пользовательских интерфейсов.
 
-### `npm run eject`
+### 2. **React Konva**
+   - **React Konva** используется для отрисовки сетки и обработки логики рисования. Он предоставляет среду, похожую на холст, в рамках React-приложения.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. **Material-UI (MUI)**
+   - **Material-UI** используется для создания компонентов пользовательского интерфейса, таких как кнопки, слайдеры и текстовые поля.
+   - Компонент `Accordion` используется для организации настроек в свертываемые секции для улучшения удобства использования.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4. **jsPDF**
+   - **jsPDF** используется для экспорта сетки в PDF-файл.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 5. **SVG2PDF.js**
+   - **SVG2PDF.js** используется для преобразования SVG-контента, сгенерированного React Konva, в формат PDF.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Как это работает
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. **Настройка холста**
+   - Размеры холста задаются в миллиметрах и преобразуются в пиксели с использованием коэффициента преобразования (`MM_TO_PX`).
+   - Размеры холста и поля хранятся в состоянии компонента и обновляются динамически на основе ввода пользователя.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2. **Генерация линий**
+   - **Горизонтальные линии**: Приложение генерирует пары горизонтальных линий с настраиваемым расстоянием между ними. Расстояние можно регулировать для имитации различных стилей письма.
+   - **Вертикальные линии**: Приложение генерирует вертикальные линии с настраиваемым расстоянием и углом наклона. Линии обрезаются, чтобы поместиться в пределах холста.
 
-### Code Splitting
+### 3. **Печать и экспорт**
+   - **Печать**: Сетка преобразуется в изображение с помощью `toDataURL` и отображается в новом окне браузера. Пользователь может распечатать сетку напрямую из браузера.
+   - **Экспорт в PDF**: Сетка преобразуется в SVG с помощью `toSVG`, а затем в PDF с использованием `jsPDF` и `svg2pdf.js`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Пользовательский интерфейс
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 1. **Настройки холста**
+   - **Формат бумаги**: Кнопки для выбора формата A4 или A3.
+   - **Пользовательский размер**: Поля ввода для задания ширины и высоты холста в миллиметрах.
+   - **Поля**: Поле ввода для задания размера полей.
 
-### Making a Progressive Web App
+### 2. **Настройки сетки**
+   - **Горизонтальные линии**:
+     - Слайдеры для регулировки высоты заглавных букв, строчных букв и межстрочного расстояния.
+     - Выбор цвета горизонтальных линий.
+   - **Вертикальные линии**:
+     - Слайдер для регулировки расстояния между вертикальными линиями.
+     - Слайдер для регулировки угла наклона вертикальных линий.
+     - Выбор цвета вертикальных линий.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3. **Печать и экспорт**
+   - **Кнопка печати**: Открывает диалог печати для сетки.
+   - **Кнопка экспорта**: Экспортирует сетку в PDF-файл.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Структура кода
 
-### Deployment
+### 1. **Управление состоянием**
+   - Приложение использует хук `useState` React для управления следующими состояниями:
+     - `canvasSizeMM`: Ширина и высота холста в миллиметрах.
+     - `marginMM`: Размер полей в миллиметрах.
+     - `lineSpacingXMM`, `lineSpacingYMM`, `lineSpacingZMM`: Расстояние между горизонтальными линиями.
+     - `verticalSpacingMM`: Расстояние между вертикальными линиями.
+     - `verticalAngle`: Угол наклона вертикальных линий.
+     - `verticalLineColor`, `horizontalLineColor`: Цвета вертикальных и горизонтальных линий.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 2. **Генерация линий**
+   - **Горизонтальные линии**: Функция `generateHorizontalLines` генерирует пары горизонтальных линий с заданным расстоянием.
+   - **Вертикальные линии**: Функция `generateVerticalLines` генерирует вертикальные линии с заданным расстоянием и углом наклона. Линии обрезаются с помощью функции `clipLineToRect`, чтобы поместиться в пределах холста.
 
-### `npm run build` fails to minify
+### 3. **Печать и экспорт**
+   - **Печать**: Функция `printDrawing` преобразует сетку в изображение и открывает диалог печати.
+   - **Экспорт в PDF**: Функция `exportToPDF` преобразует сетку в SVG, а затем в PDF.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Будущие улучшения
+
+1. **Адаптивный дизайн**: Сделать приложение адаптивным для поддержки различных размеров экранов.
+2. **Дополнительные форматы экспорта**: Добавить поддержку экспорта сетки в другие форматы, такие как PNG или JPEG.
+3. **Функциональность отмены/повтора**: Добавить возможность отмены или повтора изменений в сетке.
+4. **Дополнительные настройки**: Разрешить пользователям настраивать толщину линий, шаблоны штрихов и другие параметры сетки.
+
+---
+
+## Заключение
+
+**Grid Drawer** — это универсальный инструмент для создания пользовательских сеток для различных целей. Благодаря интуитивно понятному интерфейсу и мощным настройкам, пользователи могут легко создавать сетки, адаптированные под их нужды. Приложение использует современные веб-технологии для обеспечения удобства печати и экспорта сетки.
